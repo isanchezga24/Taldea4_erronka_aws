@@ -1,0 +1,88 @@
+/* resources/css/ranking.css */
+
+.ranking-header {
+    background: linear-gradient(to right, #000000, #2c2c2c);
+    color: white;
+    padding: 60px 0;
+    margin-bottom: 50px;
+    border-bottom: 4px solid #d4af37;
+}
+
+.ranking-card {
+    border: none;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    overflow: hidden;
+    background: white;
+    position: relative; /* Necesario para posicionar la medalla */
+}
+
+/* Efecto al pasar el ratón por la tarjeta */
+.ranking-card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+/* CONTENEDOR DE LA IMAGEN */
+.ranking-img-container {
+    height: 350px; /* Altura fija */
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+
+/* LA IMAGEN EN SÍ (Aquí está la solución) */
+.ranking-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* <--- ESTO EVITA QUE SE ESTIRE */
+    object-position: center; /* Centra la imagen */
+    transition: transform 0.5s ease;
+}
+
+.ranking-card:hover .ranking-img-container img {
+    transform: scale(1.1); /* Zoom suave al pasar el ratón */
+}
+
+/* MEDALLAS (Números 1, 2, 3) */
+.medal {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    z-index: 10;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    border: 2px solid white;
+
+    /* OCULTAS POR DEFECTO */
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: all 0.3s ease;
+}
+
+/* MOSTRAR MEDALLA AL PASAR EL RATÓN */
+.ranking-card:hover .medal {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.medal-1 { background: linear-gradient(45deg, #FFD700, #FDB931); }
+.medal-2 { background: linear-gradient(45deg, #E0E0E0, #BDBDBD); }
+.medal-3 { background: linear-gradient(45deg, #CD7F32, #A0522D); }
+
+.likes-badge {
+    background-color: #f8f9fa;
+    color: #dc3545;
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-weight: bold;
+    display: inline-block;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
